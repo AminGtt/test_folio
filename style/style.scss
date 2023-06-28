@@ -1,15 +1,33 @@
+@font-face {
+    font-family: 'Rodin';
+    src: url(../assets/fonts/Rodin/rodin.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: "Arial";
+    font-size: 24px;
 }
 
 body {
-    color: red; 
     height: 100vh;
     overflow: hidden;
+    color: whitesmoke;
+
+    main{
+        position: relative;
+        margin-top: 14%;
+        
+        li, h1, p {
+        opacity: 80%;
+        }
+    }
 
     img {
         position: fixed;
+        top: 0;
+        right: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -25,4 +43,60 @@ body {
 .xmb {
     display: flex;
     justify-content: center;
+    // position: relative;
+    // left: 30%; // step is 15% for 4 cols -> 15 -> 0 -> -15
 }
+
+.xmb_col{
+    position: relative;
+    min-width: 200px;
+}
+
+.xmb_col_icons {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+}
+
+.xmb_col_header{
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.xmb_col_title{
+    font-size: 18px;
+}
+
+.xmb_row{
+    visibility: hidden;
+}
+
+.xmb_row_content{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.xmb_row_icons {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.xmb_row_text{
+    margin-left: 20px;
+}
+
+.xmb_row_info{
+    font-size: 14px;
+}
+
+.active{
+    visibility: visible;
+}
+
