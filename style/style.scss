@@ -40,16 +40,18 @@ body {
     }
 }
 
-.xmb {
+#xmb {
     display: flex;
-    justify-content: center;
-    // position: relative;
-    // left: 30%; // step is 15% for 4 cols -> 15 -> 0 -> -15
+    position: relative;
+    left: 23%; // step is -11% (for desktop?) for 4 cols -> 23 -> 12 -> 1 -> -10
+    
 }
 
 .xmb_col{
     position: relative;
-    min-width: 200px;
+    // min-width: 200px;
+    margin-right: 10px;
+
 }
 
 .xmb_col_icons {
@@ -100,3 +102,31 @@ body {
     visibility: visible;
 }
 
+#clock{
+    opacity: 0;
+    position: absolute;
+    top: 5%;
+    left: 80%; 
+    bottom: 0;
+    right: 0;
+    width: 5%;
+    color: white;
+    text-align: right;
+    font-size: 18px;
+    z-index: 3;
+    .clock-container{
+        width: 400%;
+        border: 1px solid #dadada;
+        border-right: none;
+        border-radius: 3px;
+        padding-right: 0px 40px;
+        background-color: rgba($color: white, $alpha: 0.1);
+        p{
+            letter-spacing: 1px;
+            margin: revert;
+            margin-right: 20px;
+            text-shadow: 2px 2px 5px black;
+            font-size: 18px;
+        }
+    }
+}

@@ -8,32 +8,36 @@
 
     <link rel="stylesheet" href="style/style.css">
 
+    <script defer src="js/clock.js"></script>
+    <script defer src="js/nav.js"></script>
     <script defer src="js/app.js"></script>
 </head>
 <body>
+    <audio id="startup" src="assets/sounds/startup.mp3" type="audio/mpeg"></audio>
+    <audio id="nav" src="assets/sounds/nav.mp3" type="audio/mpeg"></audio>
     <img src="assets/images/xmb_noanim.jpg" alt="xmb_bg">
 
     
-    <section hidden class="title" id="title">
+    <section class="title" id="title">
         <h1>AS3</h1>
         <p>AminStation 3</p>
     </section>
 
-    <section hidden class = "warning">
+    <section id="warning">
         <p class="warninghead">DISCLAIMER:</p>
         <p>This is a recreation of the PS3's XMB menu. This project is used for demonstrational purposes and the design and its rights belong to Sony.</p>
     </section>
 
-    <section class = "clock">
+    <section id="clock">
         <div class="clock-container">
             <p id="date"></p>
         </div>
     </section>
 
     <main class="menu">
-        <section class="xmb">
+        <section id="xmb">
 
-            <ul class="xmb_col active">
+            <ul class="xmb_col">
                 <ul class="xmb_col_header">
                     <img src="assets/icons/xmb_home.png" alt="xmb_home" class="xmb_col_icons">
                     <li class="xmb_col_title">Home</li>
@@ -43,6 +47,7 @@
                     <ul class="xmb_row_content">
                         <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
                         <li class="xmb_row_text">Welcome!</li>
+
                         <div hidden class="infowrapper">
                             <h1>Welcome to AminStation 3!</h1>
                             <p>Navigate through the XMB menu using the arrow keys to have a look around.</p>
