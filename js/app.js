@@ -1,7 +1,7 @@
 const startupSound = document.getElementById("startup"),
-titles = document.getElementById("title"),
-warning = document.getElementById("warning"),
-warningTime = 5000;
+header = document.getElementById("header"),
+disclaimer = document.getElementById("disclaimer"),
+disclaimerTime = 5000;
 
 // startupSound.play();
 
@@ -11,39 +11,39 @@ let checkLoad = () =>{
     });
 };
 
-let titlesTimeOut = () =>{
+let headerTimeOut = () =>{
     return new Promise(resolve => {
         setTimeout(resolve, 3000);
     }
     );
 }
 
-let warningTimeOut = () => {
+let disclaimerTimeOut = () => {
     return new Promise(resolve => {
-        setTimeout(resolve, warningTime);
+        setTimeout(resolve, disclaimerTime);
     }
     );
 };
 
-let warningDisplay = async () =>{
-    await titlesTimeOut();
-    titles.remove();
-    warning.style.opacity = '1';
+let disclaimerDisplay = async () =>{
+    await headerTimeOut();
+    header.remove();
+    disclaimer.style.opacity = '1';
     setTimeout( () =>{
-        warning.style.opacity = '0';
-        warning.remove();
-    }, warningTime);
-    await warningTimeOut();
+        disclaimer.style.opacity = '0';
+        disclaimer.remove();
+    }, disclaimerTime);
+    await disclaimerTimeOut();
 };
 
-let loadTitles = async () =>{
+let loadHeader = async () =>{
     await checkLoad();
-    titles.style.opacity = '1';
-    await warningDisplay();
+    header.style.opacity = '1';
+    await disclaimerDisplay();
 };
 
 let loadMenu = async () =>{
-    await loadTitles();
+    await loadHeader();
     setClock();
     clockSection.style.opacity = '1'
 };
