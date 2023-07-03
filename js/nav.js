@@ -6,7 +6,8 @@ cols = document.querySelectorAll('.xmb_col');
 
 let sectionNumber = 0,
     subSectionNumber = 0,
-    subGotop;
+    subGotop,
+    col;
 
 
 
@@ -55,12 +56,28 @@ let defineMoveCol = () =>{
 };
 
 let setColActive = (sn, right, left) =>{
-    cols[sn].classList.add("active");
+
+    // This line is for the "xmb_col"
+    // cols[sn].classList.add("active");
+
+    // This line is for the "xmb_row"
+    cols[sn].querySelector('.xmb_row').classList.add("active");
+
     if(right === true){
-        cols[sn-1].classList.remove("active");
+
+        // This line is for the "xmb_col"
+        // cols[sn-1].classList.remove("active");
+
+        // This line is for the "xmb_row"
+        cols[sn-1].querySelector('.xmb_row').classList.remove("active");
     }
     else if(left === true){
-        cols[sn+1].classList.remove("active");
+
+        // This line is for the "xmb_col"
+        // cols[sn+1].classList.remove("active");
+
+        // This line is for the "xmb_row"
+        cols[sn+1].querySelector('.xmb_row').classList.remove("active");
     };
     // defineMoveCol();
 };
@@ -111,6 +128,7 @@ document.body.addEventListener('keydown', (e) =>{
             sectionNumber = cols.length-1;
         }
         setColActive(sectionNumber, true, false);
+        
     }
 
     else if(e.key === 'ArrowLeft'){
