@@ -1,85 +1,74 @@
 const navSound = document.getElementById("nav"),
-
-xmbMain = document.getElementById("xmb"),
-cols = document.querySelectorAll('.xmb_col');
+    xmbMain = document.getElementById("xmb"),
+    cols = document.querySelectorAll('.xmb_col');
 
 
 let sectionNumber = 0,
     subSectionNumber = 0,
     subGotop,
-    col;
-
+    col,
+    left = 29;
+    sn = 1;
 
 
 cols[sectionNumber].classList.add("active");
+cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
 
 
-let moveCol = (hd, ultraHd, fullHd) =>{
-    let width = document.body.clientWidth;
+let moveCol = (rightKey, leftKey) =>{
 
-    if (width < 1400) {
-        xmbMain.style.marginRight = hd;
+    // sn is a var created only here to "bypass" the fact that 'sectionNumber' var is 
+    // already changed when this function is called
+
+    if (rightKey && sn < cols.length) {
+        sn++;         
+        left = left - 10;
+        xmbMain.style.left = left+'%';
     }
-    else if (width >= 2560 && width <= 3840) {
-        xmbMain.style.marginRight = ultraHd;
-    }
-    else {
-        xmbMain.style.marginRight = fullHd;
+
+    else if (leftKey && sn > 1) {
+        sn--;
+        left = left + 10;
+        xmbMain.style.left = left+'%';
     };
+
 };
 
-let defineMoveCol = () =>{
-    subGotop = false;
+let setColActive = (right, left) =>{
 
-    switch (sectionNumber) {
-        case 0:
-            moveCol('-40%', 0, 0);
-            break;
-        case 1:
-            moveCol('-10%', '18%', '18%');
-            subGotop = true;
-            break;
-        case 2:
-            moveCol('22%', '32%', '39%');
-            break;
-        case 3:
-            moveCol('50%', '47%', '60%');
-            break;
-        case 4:
-            moveCol('76%', '62%', '77%');
-            break;
-        case 5:
-            moveCol('100%', '77%', '97%');
-            break;
-    };
-};
+    // This line add active class to "xmb_col"
+    cols[sectionNumber].classList.add("active");
 
-let setColActive = (sn, right, left) =>{
+    // This line add active class to "xmb_row"
+    cols[sectionNumber].querySelector('.xmb_row').classList.add("active");
 
-    // This line is for the "xmb_col"
-    // cols[sn].classList.add("active");
-
-    // This line is for the "xmb_row"
-    cols[sn].querySelector('.xmb_row').classList.add("active");
+    // This line add active class to "xmb_col_title" 
+    cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
     if(right === true){
 
-        // This line is for the "xmb_col"
-        // cols[sn-1].classList.remove("active");
+        // This line remove active class from "xmb_col"
+        cols[sectionNumber-1].classList.remove("active");
 
-        // This line is for the "xmb_row"
-        cols[sn-1].querySelector('.xmb_row').classList.remove("active");
+        // This line remove active class from "xmb_row"
+        cols[sectionNumber-1].querySelector('.xmb_row').classList.remove("active");
+
+        // This line remove active class from "xmb_col_title"
+        cols[sectionNumber-1].querySelector('.xmb_col_title').classList.remove("active");
     }
     else if(left === true){
 
-        // This line is for the "xmb_col"
-        // cols[sn+1].classList.remove("active");
+        // This line remove active class from "xmb_col"
+        cols[sectionNumber+1].classList.remove("active");
 
-        // This line is for the "xmb_row"
-        cols[sn+1].querySelector('.xmb_row').classList.remove("active");
+        // This line remove active class from "xmb_row"
+        cols[sectionNumber+1].querySelector('.xmb_row').classList.remove("active");
+
+        // This line remove active class from "xmb_col_title"
+        cols[sectionNumber+1].querySelector('.xmb_col_title').classList.remove("active");
     };
-    // defineMoveCol();
+    moveCol(right, left);
 };
 
 /* let focusSubMenu = (sn, sub, down, up) =>{
@@ -127,7 +116,7 @@ document.body.addEventListener('keydown', (e) =>{
         else if(sectionNumber >cols.length-1){
             sectionNumber = cols.length-1;
         }
-        setColActive(sectionNumber, true, false);
+        setColActive(true, false);
         
     }
 
@@ -141,7 +130,7 @@ document.body.addEventListener('keydown', (e) =>{
         else if (sectionNumber > cols.length-1) {
             sectionNumber = cols.length-1;
         }
-        setColActive(sectionNumber, false, true);
+        setColActive(false, true);
     }
 /*
     else if(e.key === 'ArrowDown'){
@@ -154,7 +143,7 @@ document.body.addEventListener('keydown', (e) =>{
         else if (subsection > 2){
             subsection = 2
         }
-        focusSubMenu(sectionNumber, subsection, true, false)
+        focusSubMenu(subsection, true, false)
     }
 
     else if(e.key === 'ArrowUp'){
@@ -167,6 +156,6 @@ document.body.addEventListener('keydown', (e) =>{
         else if (subsection > 2) {
             subsection = 2
         }
-        focusSubMenu(sectionNumber, subsection, false, true)
+        focusSubMenu(subsection, false, true)
     } */
 });

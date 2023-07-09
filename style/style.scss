@@ -16,9 +16,8 @@ body {
     color: whitesmoke;
 
     main{
-        position: relative;
-        margin-top: 14%;
-        
+        height: inherit;
+
         li, h1, p {
         opacity: 80%;
         }
@@ -43,21 +42,24 @@ body {
 #xmb {
     display: flex;
     position: relative;
-    left: 23%; // step is -11% (for desktop?) for 4 cols -> 23 -> 12 -> 1 -> -10
+    top: 27%;
+    left: 29%;
+    // position: relative;
+    // left: 25%; // step is -11% (for desktop?) for 4 cols -> 23 -> 12 -> 1 -> -10
     
 }
 
 .xmb_col{
     position: relative;
-    // min-width: 200px;
+    width: 10%;
     margin-right: 10px;
 
 }
 
 .xmb_col_icons {
     position: relative;
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
     object-fit: contain;
 }
 
@@ -70,6 +72,7 @@ body {
 }
 
 .xmb_col_title{
+    visibility: hidden;
     font-size: 18px;
 }
 
@@ -85,16 +88,18 @@ body {
 
 .xmb_row_icons {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     object-fit: contain;
 }
 
 .xmb_row_text{
     margin-left: 20px;
+    white-space: nowrap;
 }
 
 .xmb_row_info{
+    margin-left: 20px;
     font-size: 14px;
 }
 

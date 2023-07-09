@@ -15,8 +15,7 @@ body {
   color: whitesmoke;
 }
 body main {
-  position: relative;
-  margin-top: 14%;
+  height: inherit;
 }
 body main li, body main h1, body main p {
   opacity: 80%;
@@ -39,18 +38,20 @@ body ul {
 #xmb {
   display: flex;
   position: relative;
-  left: 23%;
+  top: 27%;
+  left: 29%;
 }
 
 .xmb_col {
   position: relative;
+  width: 10%;
   margin-right: 10px;
 }
 
 .xmb_col_icons {
   position: relative;
-  height: 80px;
-  width: 80px;
+  height: 90px;
+  width: 90px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -64,6 +65,7 @@ body ul {
 }
 
 .xmb_col_title {
+  visibility: hidden;
   font-size: 18px;
 }
 
@@ -79,17 +81,19 @@ body ul {
 
 .xmb_row_icons {
   position: relative;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
 .xmb_row_text {
   margin-left: 20px;
+  white-space: nowrap;
 }
 
 .xmb_row_info {
+  margin-left: 20px;
   font-size: 14px;
 }
 
