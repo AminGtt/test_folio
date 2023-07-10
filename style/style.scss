@@ -61,6 +61,7 @@ body {
     height: 90px;
     width: 90px;
     object-fit: contain;
+    margin-bottom: 15px;
 }
 
 .xmb_col_header{
@@ -68,6 +69,7 @@ body {
     width: fit-content;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 70px;
     
 }
 
@@ -83,7 +85,8 @@ body {
 .xmb_row_content{
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    margin: 0 0 40px 15px;
+    scale: 0.9;
 }
 
 .xmb_row_icons {
@@ -106,6 +109,13 @@ body {
 .active{
     visibility: visible;
 }
+
+.focus{
+    animation: glow 1s ease-in-out infinite alternate;
+    scale: 1;
+}
+
+
 
 #clock{
     opacity: 0;
@@ -135,3 +145,12 @@ body {
         }
     }
 }
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 1px #d3d3d3, 0 0 2px #acacac, 0 0 2px #b1afaf, 0 0 5px #9b9b9b;
+    }
+    to {
+      text-shadow: 0 0 5px #dfdfdf, 0 0 8px #c9c9c9, 0 0 15px #b6b6b4, 0 0 20px #b9b9b9;
+    }
+ }

@@ -71,39 +71,9 @@ let setColActive = (right, left) =>{
     moveCol(right, left);
 };
 
-/* let focusSubMenu = (sn, sub, down, up) =>{
-    switch(sub){
-        case 0:
-            if(up){
-                submenu[sub+1][sn].classList.remove("active")
-                submenu[sub][sn].classList.remove("inactive")
-            }
-            break
-        case 1:
-            if(down){
-                submenu[sub-1][sn].classList.add("inactive")
-                submenu[sub][sn].classList.add("active")
-            }
-            else if(up){
-                if(multiSection){
-                    submenu[sub+1][sn-1].classList.remove("active")
-                    submenu[sub-1][sn].classList.remove("gotop")
-                    submenu[sub][sn].classList.add("active")
-                }
-            }
-        case 2:
-            if(down){
-                if (multiSection) {
-                    submenu[sub-2][sn].classList.add("gotop")
-                    submenu[sub-1][sn].classList.remove("active")
-                    submenu[sub][sn - 1].classList.add("active")
-                }
-            }
-            break
-        default:
-            break
-    }
-} */
+let focusSubMenu = (down, up) =>{
+    // TODO
+};
 
 document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowRight'){
