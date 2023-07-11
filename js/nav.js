@@ -4,11 +4,12 @@ const navSound = document.getElementById("nav"),
 
 
 let sectionNumber = 0,
-    subSectionNumber = 0,
+    subSection = 0,
     subGotop,
     col,
     left = 29;
-    sn = 1;
+    sn = 1,
+    rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content');
 
 
 cols[sectionNumber].classList.add("active");
@@ -17,6 +18,9 @@ cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
 
 let moveCol = (rightKey, leftKey) =>{
+
+    rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content');
+    subSection = 0;
 
     // sn is a var created only here to "bypass" the fact that 'sectionNumber' var is 
     // already changed when this function is called
@@ -71,8 +75,17 @@ let setColActive = (right, left) =>{
     moveCol(right, left);
 };
 
-let focusSubMenu = (down, up) =>{
+let focusSubMenu = (downKey, upKey) =>{
     // TODO
+
+    rows[subSection].classList.add('focus');
+
+    if (downKey) {
+        rows[subSection-1].classList.remove('focus');
+    } 
+    else if (upKey) {
+        rows[subSection+1].classList.remove('focus');
+    }
 };
 
 document.body.addEventListener('keydown', (e) =>{
@@ -106,12 +119,12 @@ document.body.addEventListener('keydown', (e) =>{
     else if(e.key === 'ArrowDown'){
         navSound.play();
         e.preventDefault();
-        subsection++;
-        if(subsection < 0){
-            subsection = 0;
+        subSection++;
+        if(subSection < 0){
+            subSection = 0;
         }
-        else if (subsection > 2){
-            subsection = 2;
+        else if (subSection > rows.length-1){
+            subSection = rows.length-1;
         };
         focusSubMenu(true, false);
     }
@@ -119,12 +132,12 @@ document.body.addEventListener('keydown', (e) =>{
     else if(e.key === 'ArrowUp'){
         navSound.play();
         e.preventDefault();
-        subsection--;
-        if (subsection < 0) {
-            subsection = 0;
+        subSection--;
+        if (subSection < 0) {
+            subSection = 0;
         }
-        else if (subsection > 2) {
-            subsection = 2;
+        else if (subSection > rows.length-1) {
+            subSection = rows.length-1;
         };
         focusSubMenu(false, true);
     }

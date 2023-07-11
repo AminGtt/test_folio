@@ -1,7 +1,8 @@
 const startupSound = document.getElementById("startup"),
 header = document.getElementById("header"),
 disclaimer = document.getElementById("disclaimer"),
-disclaimerTime = 5000;
+disclaimerTime = 500,
+headerTime = 500;
 
 // startupSound.play();
 
@@ -13,7 +14,7 @@ let checkLoad = () =>{
 
 let headerTimeOut = () =>{
     return new Promise(resolve => {
-        setTimeout(resolve, 3000);
+        setTimeout(resolve, headerTime);
     }
     );
 }

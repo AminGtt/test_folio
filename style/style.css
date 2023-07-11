@@ -123,6 +123,8 @@ body ul {
   z-index: 3;
 }
 #clock .clock-container {
+  display: flex;
+  justify-content: space-between;
   width: 400%;
   border: 1px solid #dadada;
   border-right: none;
@@ -137,15 +139,16 @@ body ul {
   text-shadow: 2px 2px 5px black;
   font-size: 18px;
 }
-
-#trophy {
+#clock .clock-container #trophy {
   display: flex;
   align-items: center;
+  position: relative;
 }
-#trophy img {
+#clock .clock-container #trophy img {
   height: 25px;
   width: 25px;
   padding: 5px;
+  margin-left: 10px;
 }
 
 @keyframes glow {

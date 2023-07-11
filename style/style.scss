@@ -130,12 +130,15 @@ body {
     font-size: 18px;
     z-index: 3;
     .clock-container{
+        display: flex;
+        justify-content: space-between;
         width: 400%;
         border: 1px solid #dadada;
         border-right: none;
         border-radius: 3px;
         padding-right: 0px 40px;
         background-color: rgba($color: white, $alpha: 0.1);
+
         p{
             letter-spacing: 1px;
             margin: revert;
@@ -143,18 +146,20 @@ body {
             text-shadow: 2px 2px 5px black;
             font-size: 18px;
         }
-    }
-}
 
-#trophy{
+        #trophy{
 
-    display: flex;
-    align-items: center;
-    
-    img{
-        height: 25px;
-        width: 25px;
-        padding: 5px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            
+            img{
+                height: 25px;
+                width: 25px;
+                padding: 5px;
+                margin-left: 10px;
+            }
+        }
     }
 }
 
