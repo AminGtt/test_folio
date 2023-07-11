@@ -102,30 +102,30 @@ document.body.addEventListener('keydown', (e) =>{
         }
         setColActive(false, true);
     }
-/*
+
     else if(e.key === 'ArrowDown'){
-        navSound.play()
-        e.preventDefault()
-        subsection++
+        navSound.play();
+        e.preventDefault();
+        subsection++;
         if(subsection < 0){
-            subsection = 0
+            subsection = 0;
         }
         else if (subsection > 2){
-            subsection = 2
-        }
-        focusSubMenu(subsection, true, false)
+            subsection = 2;
+        };
+        focusSubMenu(true, false);
     }
 
     else if(e.key === 'ArrowUp'){
-        navSound.play()
-        e.preventDefault()
-        subsection--
+        navSound.play();
+        e.preventDefault();
+        subsection--;
         if (subsection < 0) {
-            subsection = 0
+            subsection = 0;
         }
         else if (subsection > 2) {
-            subsection = 2
-        }
-        focusSubMenu(subsection, false, true)
-    } */
+            subsection = 2;
+        };
+        focusSubMenu(false, true);
+    }
 });

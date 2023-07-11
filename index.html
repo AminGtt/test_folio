@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="style/style.css">
 
+    <link rel="icon" type="image/x-icon" href="./assets/icons/icon_ps3.svg">
+
     <script defer src="js/clock.js"></script>
     <script defer src="js/nav.js"></script>
     <script defer src="js/app.js"></script>
@@ -15,7 +17,7 @@
 <body>
     <audio id="startup" src="assets/sounds/startup.mp3" type="audio/mpeg"></audio>
     <audio id="nav" src="assets/sounds/nav.mp3" type="audio/mpeg"></audio>
-    <img src="assets/images/xmb_noanim.jpg" alt="xmb_bg">
+    <img src="assets/images/xmb_noanim.jpg" alt="xmb_bg" id="xmb_bg">
 
     
     <section class="header" id="header">
@@ -32,6 +34,11 @@
         <div class="clock-container">
             <p id="date"></p>
         </div>
+    </section>
+
+    <section id="trophy">
+        <img src="assets/icons/xmb_trophy.png" alt="trophy_icon" id="trophy_icon">
+        <p id="score">0</p>
     </section>
 
     <main class="menu">

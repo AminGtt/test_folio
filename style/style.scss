@@ -23,7 +23,7 @@ body {
         }
     }
 
-    img {
+    #xmb_bg {
         position: fixed;
         top: 0;
         right: 0;
@@ -143,6 +143,18 @@ body {
             text-shadow: 2px 2px 5px black;
             font-size: 18px;
         }
+    }
+}
+
+#trophy{
+
+    display: flex;
+    align-items: center;
+    
+    img{
+        height: 25px;
+        width: 25px;
+        padding: 5px;
     }
 }
 
