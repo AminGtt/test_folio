@@ -7,18 +7,31 @@
     <title>Test folio</title>
 
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="./style/bg_config.css"> <!--  backgroundStyleSheet -->
 
     <link rel="icon" type="image/x-icon" href="./assets/icons/icon_ps3.svg">
+
+    <!-- Start background scripts -->
+    <script src="./js/bg_config.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/regl/1.3.1/regl.js"></script>
+	<script id="BackgroundFragment" src="js/shaders/bg_fragment.glsl.js"></script>
+	<script id="BackgroundVertex" src="js/shaders/bg_vertex.glsl.js"></script>
+	<script id="FlowVertex" src="js/shaders/flow_vertex.glsl.js"></script>
+	<script id="FlowFragment" src="js/shaders/flow_fragment.glsl.js"></script>
+	<script id="ParticleVertex" src="js/shaders/particle_vertex.glsl.js"></script>
+	<script id="ParticleFragment" src="js/shaders/particle_fragment.glsl.js"></script>
+    <!-- End background scripts -->
 
     <script defer src="js/clock.js"></script>
     <script defer src="js/nav.js"></script>
     <script defer src="js/app.js"></script>
 </head>
 <body>
-    <audio id="startup" src="assets/sounds/startup.mp3" type="audio/mpeg"></audio>
+    <audio id="startup" src="assets/sounds/startup.mp3" type="audio/mp3"></audio>
     <audio id="nav" src="assets/sounds/nav.mp3" type="audio/mpeg"></audio>
-    <img src="assets/images/xmb_noanim.jpg" alt="xmb_bg" id="xmb_bg">
 
+    <!-- background rendering script -->
+    <script src="js/render.js"></script>
     
     <section class="header" id="header">
         <h1>AS3</h1>

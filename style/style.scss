@@ -14,6 +14,7 @@ body {
     height: 100vh;
     overflow: hidden;
     color: whitesmoke;
+    user-select: none;
 
     main{
         height: inherit;
@@ -161,6 +162,10 @@ body {
             }
         }
     }
+}
+
+#header, #disclaimer{
+    position: relative;
 }
 
 @keyframes glow {
