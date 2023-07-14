@@ -9,7 +9,8 @@ let sectionNumber = 0,
     col,
     left = 29;
     sn = 1,
-    rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content');
+    rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content'),
+    savedSubSections = [];
 
 
 cols[sectionNumber].classList.add("active");
@@ -41,35 +42,35 @@ let moveCol = (rightKey, leftKey) =>{
 
 let setColActive = (right, left) =>{
 
-    // This line add active class to "xmb_col"
+    // add active class to "xmb_col"
     cols[sectionNumber].classList.add("active");
 
-    // This line add active class to "xmb_row"
+    // add active class to "xmb_row"
     cols[sectionNumber].querySelector('.xmb_row').classList.add("active");
 
-    // This line add active class to "xmb_col_title" 
+    // add active class to "xmb_col_title" 
     cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
     if(right === true){
 
-        // This line remove active class from "xmb_col"
+        // remove active class from "xmb_col"
         cols[sectionNumber-1].classList.remove("active");
 
-        // This line remove active class from "xmb_row"
+        // remove active class from "xmb_row"
         cols[sectionNumber-1].querySelector('.xmb_row').classList.remove("active");
 
-        // This line remove active class from "xmb_col_title"
+        // remove active class from "xmb_col_title"
         cols[sectionNumber-1].querySelector('.xmb_col_title').classList.remove("active");
     }
     else if(left === true){
 
-        // This line remove active class from "xmb_col"
+        // remove active class from "xmb_col"
         cols[sectionNumber+1].classList.remove("active");
 
-        // This line remove active class from "xmb_row"
+        // remove active class from "xmb_row"
         cols[sectionNumber+1].querySelector('.xmb_row').classList.remove("active");
 
-        // This line remove active class from "xmb_col_title"
+        // remove active class from "xmb_col_title"
         cols[sectionNumber+1].querySelector('.xmb_col_title').classList.remove("active");
     };
     moveCol(right, left);

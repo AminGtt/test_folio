@@ -1,8 +1,9 @@
 const startupSound = document.getElementById("startup"),
 header = document.getElementById("header"),
+menu = document.getElementById("menu"),
 disclaimer = document.getElementById("disclaimer"),
-disclaimerTime = 500,
-headerTime = 500;
+disclaimerTime = 3000,
+headerTime = 3000;
 
 // startupSound.play();
 
@@ -30,11 +31,8 @@ let disclaimerDisplay = async () =>{
     await headerTimeOut();
     header.remove();
     disclaimer.style.opacity = '1';
-    setTimeout( () =>{
-        disclaimer.style.opacity = '0';
-        disclaimer.remove();
-    }, disclaimerTime);
     await disclaimerTimeOut();
+    disclaimer.remove();
 };
 
 let loadHeader = async () =>{
@@ -45,8 +43,9 @@ let loadHeader = async () =>{
 
 let loadMenu = async () =>{
     await loadHeader();
+    menu.style.opacity = '1';
     setClock();
-    clockSection.style.opacity = '1'
+    clockSection.style.opacity = '1';
 };
 
 loadMenu();

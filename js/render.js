@@ -170,3 +170,14 @@ var tick = regl.frame( ( context ) => {
 } */ 
 const bg_settings_form = document.getElementById("bg_settings_form");
 bg_settings_form.remove();
+
+
+
+// HERE are the params to change
+// drawParams.particleOpacity = 0;
+// drawParams.brightness = 0.2;
+// drawParams.backgroundColor = [ 116,  15,  48 ];
+
+// TODO 
+// make brightness increase from 0 to 0.5 smoothly
+// make particles ON/OFF
