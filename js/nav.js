@@ -6,22 +6,44 @@ const navSound = document.getElementById("nav"),
 let sectionNumber = 0,
     subSection = 0,
     subGotop,
-    col,
     left = 29;
     sn = 1,
     rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content'),
-    savedSubSections = [];
+    savedSubSections = [0];
 
 
 cols[sectionNumber].classList.add("active");
 cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
+let sectionCheck = () => {
+    if(sectionNumber < 0){
+        sectionNumber = 0;
+    }
+    else if(sectionNumber > cols.length-1){
+        sectionNumber = cols.length-1;
+    }
+    
+    if (savedSubSections[sectionNumber] === undefined) {
+        subSection = 0;
+        savedSubSections[sectionNumber] = 0;
+    } else if (savedSubSections[sectionNumber] !== undefined) {
+        subSection = savedSubSections[sectionNumber];
+    }
+}
 
+let subSectionCheck = () => {
+    if(subSection < 0){
+        subSection = 0;
+    }
+    else if (subSection > rows.length-1){
+        subSection = rows.length-1;
+    };
+}
 
 let moveCol = (rightKey, leftKey) =>{
 
     rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content');
-    subSection = 0;
+    
 
     // sn is a var created only here to "bypass" the fact that 'sectionNumber' var is 
     // already changed when this function is called
@@ -77,7 +99,8 @@ let setColActive = (right, left) =>{
 };
 
 let focusSubMenu = (downKey, upKey) =>{
-    // TODO
+
+    savedSubSections[sectionNumber] = subSection;
 
     rows[subSection].classList.add('focus');
 
@@ -94,12 +117,8 @@ document.body.addEventListener('keydown', (e) =>{
         navSound.play();
         e.preventDefault();
         sectionNumber++;
-        if(sectionNumber<0){
-            sectionNumber = 0;
-        }
-        else if(sectionNumber >cols.length-1){
-            sectionNumber = cols.length-1;
-        }
+
+        sectionCheck();
         setColActive(true, false);
         
     }
@@ -108,12 +127,8 @@ document.body.addEventListener('keydown', (e) =>{
         navSound.play();
         e.preventDefault();
         sectionNumber--;
-        if (sectionNumber < 0) {
-            sectionNumber = 0;
-        }
-        else if (sectionNumber > cols.length-1) {
-            sectionNumber = cols.length-1;
-        }
+
+        sectionCheck();
         setColActive(false, true);
     }
 
@@ -121,12 +136,8 @@ document.body.addEventListener('keydown', (e) =>{
         navSound.play();
         e.preventDefault();
         subSection++;
-        if(subSection < 0){
-            subSection = 0;
-        }
-        else if (subSection > rows.length-1){
-            subSection = rows.length-1;
-        };
+        
+        subSectionCheck();
         focusSubMenu(true, false);
     }
 
@@ -134,12 +145,8 @@ document.body.addEventListener('keydown', (e) =>{
         navSound.play();
         e.preventDefault();
         subSection--;
-        if (subSection < 0) {
-            subSection = 0;
-        }
-        else if (subSection > rows.length-1) {
-            subSection = rows.length-1;
-        };
+        
+        subSectionCheck();
         focusSubMenu(false, true);
     }
 });
