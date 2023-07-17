@@ -175,6 +175,9 @@ body ul {
   color: #dadada;
   text-shadow: 2px 2px 5px black;
 }
+#header h1 img {
+  scale: 2;
+}
 #header p {
   font-size: 32px;
   margin-top: -40px;

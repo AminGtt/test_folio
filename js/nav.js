@@ -112,9 +112,13 @@ let focusSubMenu = (downKey, upKey) =>{
     }
 };
 
+let playNavSound = () => {
+    navSound.cloneNode(true).play();
+}
+
 document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowRight'){
-        navSound.play();
+        playNavSound();
         e.preventDefault();
         sectionNumber++;
 
@@ -124,7 +128,7 @@ document.body.addEventListener('keydown', (e) =>{
     }
 
     else if(e.key === 'ArrowLeft'){
-        navSound.play();
+        playNavSound();
         e.preventDefault();
         sectionNumber--;
 
@@ -133,7 +137,7 @@ document.body.addEventListener('keydown', (e) =>{
     }
 
     else if(e.key === 'ArrowDown'){
-        navSound.play();
+        playNavSound();
         e.preventDefault();
         subSection++;
         
@@ -142,11 +146,25 @@ document.body.addEventListener('keydown', (e) =>{
     }
 
     else if(e.key === 'ArrowUp'){
-        navSound.play();
+        playNavSound();
         e.preventDefault();
         subSection--;
         
         subSectionCheck();
         focusSubMenu(false, true);
+    }
+
+    else if(e.key === 'Enter'){
+        playNavSound();
+        e.preventDefault();
+        
+        //todo
+    }
+
+    else if(e.key === 'Escape'){
+        playNavSound();
+        e.preventDefault();
+        
+        //todo
     }
 });
