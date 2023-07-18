@@ -15,6 +15,10 @@ let sectionNumber = 0,
 cols[sectionNumber].classList.add("active");
 cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
+let playNavSound = () => {
+    navSound.cloneNode(true).play();
+}
+
 let sectionCheck = () => {
     if(sectionNumber < 0){
         sectionNumber = 0;
@@ -62,6 +66,17 @@ let moveCol = (rightKey, leftKey) =>{
 
 };
 
+let moveSubSection = (downKey, upKey) => {
+    if(downKey) {
+        console.log(downKey);
+        //todo
+    }
+    else if(upKey) {
+        console.log(upKey);
+        //todo
+    }
+}
+
 let setColActive = (right, left) =>{
 
     // add active class to "xmb_col"
@@ -106,14 +121,31 @@ let focusSubMenu = (downKey, upKey) =>{
 
     if (downKey) {
         rows[subSection-1].classList.remove('focus');
+        moveSubSection(downKey, upKey);
     } 
     else if (upKey) {
         rows[subSection+1].classList.remove('focus');
+        moveSubSection(downKey, upKey);
     }
+
 };
 
-let playNavSound = () => {
-    navSound.cloneNode(true).play();
+displayInfos = () => {
+    let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
+    let info = infos[subSection];
+    if(info) {
+        info.style.visibility = 'visible';
+        //info.removeAttribute("hidden");
+    }
+}
+
+removeInfos  = () => {
+    let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
+    let info = infos[subSection];
+    if(info) {
+        info.style.visibility = 'hidden';
+        //info.setAttribute("hidden");
+    }
 }
 
 document.body.addEventListener('keydown', (e) =>{
@@ -159,6 +191,7 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault();
         
         //todo
+        displayInfos();
     }
 
     else if(e.key === 'Escape'){
@@ -166,5 +199,6 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault();
         
         //todo
+        removeInfos();
     }
 });
