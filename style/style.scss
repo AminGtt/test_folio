@@ -103,6 +103,7 @@ body {
     position: relative;
     transition: top .5s;
     top: 0;
+    white-space: nowrap;
 }
 
 .xmb_row_icons {
@@ -114,7 +115,7 @@ body {
 
 .xmb_row_text{
     margin-left: 20px;
-    white-space: nowrap;
+    
 }
 
 .xmb_row_info{
