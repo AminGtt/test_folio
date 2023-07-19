@@ -78,6 +78,7 @@ body ul {
 
 .xmb_row {
   visibility: hidden;
+  position: relative;
 }
 
 .xmb_row_content {
@@ -85,6 +86,7 @@ body ul {
   align-items: center;
   margin: 0 0 40px 15px;
   scale: 0.9;
+  position: relative;
 }
 
 .xmb_row_icons {

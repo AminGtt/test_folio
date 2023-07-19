@@ -5,8 +5,8 @@ const navSound = document.getElementById("nav"),
 
 let sectionNumber = 0,
     subSection = 0,
-    subGotop,
-    left = 29;
+    menuLeftPos = 29,
+    subSectionTopPos = 0,
     sn = 1,
     rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content'),
     savedSubSections = [0];
@@ -33,6 +33,8 @@ let sectionCheck = () => {
     } else if (savedSubSections[sectionNumber] !== undefined) {
         subSection = savedSubSections[sectionNumber];
     }
+    
+    subSectionTopPos = savedSubSections[sectionNumber] * -110;
 }
 
 let subSectionCheck = () => {
@@ -54,28 +56,17 @@ let moveCol = (rightKey, leftKey) =>{
 
     if (rightKey && sn < cols.length) {
         sn++;         
-        left = left - 10;
-        xmbMain.style.left = left+'%';
+        menuLeftPos = menuLeftPos - 10;
+        xmbMain.style.left = menuLeftPos+'%';
     }
 
     else if (leftKey && sn > 1) {
         sn--;
-        left = left + 10;
-        xmbMain.style.left = left+'%';
+        menuLeftPos = menuLeftPos + 10;
+        xmbMain.style.left = menuLeftPos+'%';
     };
 
 };
-
-let moveSubSection = (downKey, upKey) => {
-    if(downKey) {
-        console.log(downKey);
-        //todo
-    }
-    else if(upKey) {
-        console.log(upKey);
-        //todo
-    }
-}
 
 let setColActive = (right, left) =>{
 
@@ -115,36 +106,33 @@ let setColActive = (right, left) =>{
 
 let focusSubMenu = (downKey, upKey) =>{
 
+    // save the last subsec in a section when changing
     savedSubSections[sectionNumber] = subSection;
 
     rows[subSection].classList.add('focus');
 
     if (downKey) {
         rows[subSection-1].classList.remove('focus');
-        moveSubSection(downKey, upKey);
     } 
     else if (upKey) {
         rows[subSection+1].classList.remove('focus');
-        moveSubSection(downKey, upKey);
     }
 
 };
 
-displayInfos = () => {
+let displayInfos = () => {
     let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
     let info = infos[subSection];
     if(info) {
         info.style.visibility = 'visible';
-        //info.removeAttribute("hidden");
     }
 }
 
-removeInfos  = () => {
+let removeInfos  = () => {
     let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
     let info = infos[subSection];
     if(info) {
         info.style.visibility = 'hidden';
-        //info.setAttribute("hidden");
     }
 }
 
@@ -171,6 +159,13 @@ document.body.addEventListener('keydown', (e) =>{
     else if(e.key === 'ArrowDown'){
         playNavSound();
         e.preventDefault();
+
+        if(subSection < rows.length - 1) {
+            subSectionTopPos = subSectionTopPos - 110;
+            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+            rows[subSection].style.top = -220+'px';
+        }
+
         subSection++;
         
         subSectionCheck();
@@ -180,6 +175,13 @@ document.body.addEventListener('keydown', (e) =>{
     else if(e.key === 'ArrowUp'){
         playNavSound();
         e.preventDefault();
+
+        if(subSection > 0) {
+            subSectionTopPos = subSectionTopPos +  110;
+            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+            rows[subSection-1].style.top = 0+'px';
+        }
+        
         subSection--;
         
         subSectionCheck();
