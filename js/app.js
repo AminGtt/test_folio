@@ -2,8 +2,8 @@ const startupSound = document.getElementById("startup"),
 header = document.getElementById("header"),
 menu = document.getElementById("menu"),
 disclaimer = document.getElementById("disclaimer"),
-disclaimerTime = 1000,
-headerTime = 1500;
+disclaimerTime = 500,
+headerTime = 500;
 
 // startupSound.play();
 

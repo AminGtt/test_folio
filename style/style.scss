@@ -10,6 +10,13 @@
     
 }
 
+#wip{
+    text-align: center;
+    font-size: 70px;
+    position: relative;
+    top: 300px;
+}
+
 body {
     font-size: 24px;
     height: 100vh;
@@ -48,8 +55,7 @@ body {
     position: relative;
     top: 27%;
     left: 29%;
-    // position: relative;
-    // left: 25%; // step is -11% (for desktop?) for 4 cols -> 23 -> 12 -> 1 -> -10
+    transition: left .5s ease;
     
 }
 
@@ -85,6 +91,8 @@ body {
 .xmb_row{
     visibility: hidden;
     position: relative;
+    transition: top .5s;
+    top: 0;
 }
 
 .xmb_row_content{
@@ -93,6 +101,8 @@ body {
     margin: 0 0 40px 15px;
     scale: 0.9;
     position: relative;
+    transition: top .5s;
+    top: 0;
 }
 
 .xmb_row_icons {
@@ -230,9 +240,25 @@ body {
     }
 }
 
-.infowrapper{
-    position: absolute;
-    visibility: hidden;
+.about-bg{
+
+    .infowrapper{
+        visibility: hidden;
+        position: absolute;
+        width: 350%;
+        height: auto;
+        top: 0;
+        left: 250px;
+        padding: 20px;
+        border: 1px solid;
+        border-radius: 15px;
+        z-index: -1;
+        
+        h1{
+            border-bottom: 2px solid white;
+            padding: 10px 0 20px;
+        }
+    }
 }
 
 @keyframes glow {

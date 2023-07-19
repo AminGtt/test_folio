@@ -9,7 +9,9 @@ let sectionNumber = 0,
     subSectionTopPos = 0,
     sn = 1,
     rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content'),
-    savedSubSections = [0];
+    savedSubSections = [0],
+    info,
+    infos;
 
 
 cols[sectionNumber].classList.add("active");
@@ -20,6 +22,7 @@ let playNavSound = () => {
 }
 
 let sectionCheck = () => {
+    removeInfos();
     if(sectionNumber < 0){
         sectionNumber = 0;
     }
@@ -38,6 +41,7 @@ let sectionCheck = () => {
 }
 
 let subSectionCheck = () => {
+    removeInfos();
     if(subSection < 0){
         subSection = 0;
     }
@@ -120,17 +124,18 @@ let focusSubMenu = (downKey, upKey) =>{
 
 };
 
+let setInfos = () => {
+    infos = cols[sectionNumber].querySelectorAll(".infowrapper")
+    info = infos[subSection];
+};
+
 let displayInfos = () => {
-    let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
-    let info = infos[subSection];
     if(info) {
         info.style.visibility = 'visible';
     }
 }
 
 let removeInfos  = () => {
-    let infos = cols[sectionNumber].querySelectorAll(".infowrapper");
-    let info = infos[subSection];
     if(info) {
         info.style.visibility = 'hidden';
     }
@@ -193,6 +198,7 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault();
         
         //todo
+        setInfos();
         displayInfos();
     }
 
@@ -201,6 +207,7 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault();
         
         //todo
+        setInfos();
         removeInfos();
     }
 });
