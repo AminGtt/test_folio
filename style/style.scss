@@ -123,6 +123,12 @@ body {
     font-size: 14px;
 }
 
+.details_icon{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
 .active{
     visibility: visible;
 }
@@ -189,13 +195,17 @@ body {
 
     #welcomerText{
         position: relative;
-        top: 30%;    
+        top: 35%;    
     }
 
     #welcomerBtn{
         position: absolute;
-        top: 88%;
+        top: 87%;
         left: 25%;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 }
 

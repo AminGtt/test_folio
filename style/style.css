@@ -119,6 +119,12 @@ body ul {
   font-size: 14px;
 }
 
+.details_icon {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
 .active {
   visibility: visible;
 }
@@ -180,12 +186,16 @@ body ul {
 }
 #welcomer #welcomerText {
   position: relative;
-  top: 30%;
+  top: 35%;
 }
 #welcomer #welcomerBtn {
   position: absolute;
-  top: 88%;
+  top: 87%;
   left: 25%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 #welcomer::before {

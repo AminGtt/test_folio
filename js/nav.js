@@ -1,19 +1,3 @@
-const navSound = document.getElementById("nav"),
-    xmbMain = document.getElementById("xmb"),
-    cols = document.querySelectorAll('.xmb_col');
-
-
-let sectionNumber = 0,
-    subSection = 0,
-    menuLeftPos = 29,
-    subSectionTopPos = 0,
-    sn = 1,
-    rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content'),
-    savedSubSections = [0],
-    info,
-    infos;
-
-
 cols[sectionNumber].classList.add("active");
 cols[sectionNumber].querySelector('.xmb_col_title').classList.add("active");
 
@@ -141,6 +125,36 @@ let removeInfos  = () => {
     }
 }
 
+let open = () => {
+
+    // redefine vars on each call to validate the current state
+    welcomer = document.getElementById("welcomer")
+
+
+    if(welcomer){
+
+        goNextStep = true;
+
+    } 
+    else if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
+
+        // todo
+
+    }
+}
+
+let close = () => {
+
+    // redefine vars on each call to validate the current state
+    
+    
+    if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
+
+        // todo
+        
+    }
+}
+
 document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowRight'){
         playNavSound();
@@ -197,17 +211,13 @@ document.body.addEventListener('keydown', (e) =>{
         playNavSound();
         e.preventDefault();
         
-        //todo
-        setInfos();
-        displayInfos();
+        open();
     }
 
     else if(e.key === 'Escape'){
         playNavSound();
         e.preventDefault();
         
-        //todo
-        setInfos();
-        removeInfos();
+        close();
     }
 });
