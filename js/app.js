@@ -16,7 +16,7 @@ let checkLoad = () =>{
 
 let welcomerTimeOut = () =>{
     return new Promise(resolve => {
-        setTimeout(resolve, 30000);
+        setTimeout(resolve, 2000);
     }
     );
 }
