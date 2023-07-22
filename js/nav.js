@@ -34,6 +34,18 @@ let subSectionCheck = () => {
     close();
 }
 
+let hideMainInfo = () => {
+    maininfo = document.getElementById("maininfo")
+
+    if (!document.getElementById("welcomeTile").classList.contains("focus")) {
+        maininfo.style.opacity = 0
+    } else if (document.getElementById("welcomeTile").classList.contains("focus")) {
+        setTimeout(() => {
+            maininfo.style.opacity = 1
+        }, 500);
+    }
+}
+
 let moveCol = (rightKey, leftKey) =>{
 
     rows = cols[sectionNumber].querySelector('.xmb_row').querySelectorAll('.xmb_row_content');
@@ -120,7 +132,7 @@ let focusSubMenu = (downKey, upKey, rightKey, leftKey) =>{
 };
 
 let setInfos = () => {
-    infos = cols[sectionNumber].querySelectorAll(".infowrapper")
+    infos = cols[sectionNumber].querySelectorAll(".infowrapper");
     info = infos[subSection];
 };
 
@@ -150,7 +162,10 @@ let open = () => {
         focus = cols[sectionNumber].getElementsByClassName("focus")[0]
 
         if (focus.classList.contains("settings")) {
+
+            //function here
             settingswrapper.style.opacity = 1;
+
         } else if(focus.classList.contains("infos")){
             displayInfos()
         }
@@ -209,6 +224,7 @@ document.body.addEventListener('keydown', (e) =>{
         
         subSectionCheck();
         focusSubMenu(true, false, false, false);
+        hideMainInfo();
     }
 
     else if(e.key === 'ArrowUp'){
@@ -225,6 +241,7 @@ document.body.addEventListener('keydown', (e) =>{
         
         subSectionCheck();
         focusSubMenu(false, true, false, false);
+        hideMainInfo();
     }
 
     else if(e.key === 'Enter'){

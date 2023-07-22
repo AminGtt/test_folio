@@ -90,11 +90,21 @@
                 </ul>
 
                 <ul class="xmb_row active">
-                    <ul class="xmb_row_content infos focus" id="welcomeTile">
-                        <img src="assets/icons/xmb_welcome.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Welcome!</li>
+                    <!-- if one row need infowrapper, the full col need infowrapper div
+                    to avoid bugs. -->
 
-                        <div class="infowrapper" id="maininfo">
+                    <!-- to "activate" the infowrapper display, 
+                    "infos" class is needed in "xmb_row_content" <ul> -->
+                    <ul class="xmb_row_content focus" id="welcomeTile"> 
+                        <img src="assets/icons/xmb_welcome.png" alt="xmb_folder" class="xmb_row_icons">
+                        <ul>
+                            <li class="xmb_row_text">Welcome!</li>
+                        </ul>
+
+                        <div class="infowrapper">
+                        </div>
+
+                        <div id="maininfo">
                             <h1>Welcome to AminStation 3!</h1>
                             <p>Navigate through the XMB menu using the arrow keys to have a look around, <br> press enter and esc to open/close a menu.</p>
                             <p>Made by Amin Gatta</p>
@@ -104,7 +114,9 @@
 
                     <ul class="xmb_row_content infos">
                         <img src="assets/icons/user.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Who am I?</li>
+                        <ul>
+                            <li class="xmb_row_text">Who am I?</li>
+                        </ul>
 
                         <div class="infowrapper">
                             <h1>Test</h1>
@@ -121,19 +133,51 @@
                 </ul>
 
                 <ul class="xmb_row">
-                    <ul class="xmb_row_content">
+                    <ul class="xmb_row_content ">
                         <img src="assets/icons/xmb_angular.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Angular</li>
+                        <ul>
+                            <li class="xmb_row_text">Angular</li>
+                            <li class="xmb_row_info">My Angular skills</li>
+                        </ul>
+
+                        <div class="infowrapper">
+                        </div>
                     </ul>
 
-                    <ul class="xmb_row_content">
+
+                    <ul class="xmb_row_content ">
                         <img src="assets/icons/xmb_symfony.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Symfony</li>
+                        <ul>
+                            <li class="xmb_row_text">Symfony</li>
+                            <li class="xmb_row_info">My Symfony skills</li>
+                        </ul>
+                        
+                        <div class="infowrapper">
+                        </div>
                     </ul>
 
-                    <ul class="xmb_row_content">
+
+                    <ul class="xmb_row_content infos">
                         <img src="assets/icons/xmb_docker.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Docker</li>
+                        <ul>
+                            <li class="xmb_row_text">Docker</li>
+                            <li class="xmb_row_info">My Docker skills</li>
+                        </ul>
+
+                        <div class="infowrapper">
+                            <h1>Test</h1>
+                            <p>Toto tata</p>
+                        </div>
+                    </ul>
+                    <ul class="xmb_row_content ">
+                        <img src="assets/icons/xmb_vr.png" alt="xmb_folder" class="xmb_row_icons">
+                        <ul>
+                            <li class="xmb_row_text">WebXR</li>
+                            <li class="xmb_row_info">My VR/AR skills</li>
+                        </ul>
+
+                        <div class="infowrapper">
+                        </div>
                     </ul>
                 </ul>
             </ul>
@@ -147,7 +191,11 @@
                 <ul class="xmb_row">
                     <ul class="xmb_row_content infos">
                         <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Projet 1</li>
+                        <ul>
+                            <li class="xmb_row_text">ISS live tracker</li>
+                            <li class="xmb_row_info">Angular/TypeScript/Scss</li>
+                        </ul>
+                        
 
                         <div class="infowrapper">
                             <h1>Test</h1>
@@ -157,18 +205,41 @@
 
                     <ul class="xmb_row_content">
                         <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Projet 2</li>
+                        <ul>
+                            <li class="xmb_row_text">Projet 2</li>
+                            <li class="xmb_row_info">My wonderfull project</li>
+                        </ul>
+                        
+                        <div class="infowrapper">
+                        </div>
                     </ul>
+
+
+                    <ul class="xmb_row_content infos">
+                        <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
+                        <ul>
+                            <li class="xmb_row_text">Projet 3</li>
+                            <li class="xmb_row_info">My wonderfull project</li>
+                        </ul>
+                        
+                        <div class="infowrapper">
+                            <h1>Test</h1>
+                            <p>Toto tata</p>
+                        </div>
+                    </ul>
+
 
                     <ul class="xmb_row_content">
                         <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Projet 3</li>
+                        <ul>
+                            <li class="xmb_row_text">Projet 4</li>
+                            <li class="xmb_row_info">My wonderfull project</li>
+                        </ul>
+                        
+                        <div class="infowrapper">
+                        </div>
                     </ul>
 
-                    <ul class="xmb_row_content">
-                        <img src="assets/icons/xmb_folder.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Projet 4</li>
-                    </ul>
                 </ul>
             </ul>
 
@@ -181,17 +252,26 @@
                 <ul class="xmb_row">
                     <ul class="xmb_row_content">
                         <img src="assets/icons/xmb_linkedin.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Linkedin</li>
+                        <ul>
+                            <li class="xmb_row_text">Linkedin</li>
+                            <li class="xmb_row_info">Add me &#128512;</li>
+                        </ul>
                     </ul>
 
                     <ul class="xmb_row_content">
                         <img src="assets/icons/xmb_github.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Github</li>
+                        <ul>
+                            <li class="xmb_row_text">Github</li>
+                            <li class="xmb_row_info">My amazing code</li>
+                        </ul>
                     </ul>
 
                     <ul class="xmb_row_content">
                         <img src="assets/icons/contact_me.png" alt="xmb_folder" class="xmb_row_icons">
-                        <li class="xmb_row_text">Mail</li>
+                        <ul>
+                            <li class="xmb_row_text">Mail</li>
+                            <li class="xmb_row_info">Wanna mail me?</li>
+                        </ul>
                     </ul>
                 </ul>
             </ul>

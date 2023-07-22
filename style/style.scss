@@ -318,6 +318,28 @@ body {
 
 }
 
+#maininfo{
+    opacity: 1;
+    position: absolute;
+    width: 350%;
+    height: auto;
+    top: 0;
+    left: 250px;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 15px;
+    z-index: -1;
+    text-shadow: none;
+    background-color: dodgerblue;
+    transition: opacity .1s ease;
+    
+    h1{
+        border-bottom: 2px solid white;
+        padding: 10px 0 20px;
+    }
+
+}
+
 #settingswrapper{
     visibility: visible;
     opacity: 0;
