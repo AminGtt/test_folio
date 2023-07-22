@@ -6,7 +6,6 @@ let playNavSound = () => {
 }
 
 let sectionCheck = () => {
-    removeInfos();
     if(sectionNumber < 0){
         sectionNumber = 0;
     }
@@ -22,16 +21,17 @@ let sectionCheck = () => {
     }
     
     subSectionTopPos = savedSubSections[sectionNumber] * -110;
+    close();
 }
 
 let subSectionCheck = () => {
-    removeInfos();
     if(subSection < 0){
         subSection = 0;
     }
     else if (subSection > rows.length-1){
         subSection = rows.length-1;
     };
+    close();
 }
 
 let moveCol = (rightKey, leftKey) =>{
@@ -92,7 +92,7 @@ let setColActive = (right, left) =>{
     moveCol(right, left);
 };
 
-let focusSubMenu = (downKey, upKey) =>{
+let focusSubMenu = (downKey, upKey, rightKey, leftKey) =>{
 
     // save the last subsec in a section when changing
     savedSubSections[sectionNumber] = subSection;
@@ -102,8 +102,19 @@ let focusSubMenu = (downKey, upKey) =>{
     if (downKey) {
         rows[subSection-1].classList.remove('focus');
     } 
-    else if (upKey) {
+    else 
+    if (upKey) {
         rows[subSection+1].classList.remove('focus');
+    } else  
+    if (rightKey) {
+        // TODO rows-1
+
+        cols[sectionNumber-1].getElementsByClassName('focus')[0].classList.remove('focus')
+    } else  
+    if (leftKey) {
+        // TODO rows+1
+
+        cols[sectionNumber+1].getElementsByClassName('focus')[0].classList.remove('focus')
     }
 
 };
@@ -114,14 +125,15 @@ let setInfos = () => {
 };
 
 let displayInfos = () => {
+    setInfos();
     if(info) {
-        info.style.visibility = 'visible';
+        info.style.opacity = 1;
     }
 }
 
 let removeInfos  = () => {
     if(info) {
-        info.style.visibility = 'hidden';
+        info.style.opacity = 0;
     }
 }
 
@@ -130,28 +142,34 @@ let open = () => {
     // redefine vars on each call to validate the current state
     welcomer = document.getElementById("welcomer")
 
-
     if(welcomer){
-
         goNextStep = true;
-
     } 
     else if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
 
-        // todo
+        focus = cols[sectionNumber].getElementsByClassName("focus")[0]
+
+        if (focus.classList.contains("settings")) {
+            settingswrapper.style.opacity = 1;
+        } else if(focus.classList.contains("infos")){
+            displayInfos()
+        }
 
     }
 }
 
 let close = () => {
 
-    // redefine vars on each call to validate the current state
-    
-    
     if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
 
-        // todo
-        
+        focus = cols[sectionNumber].getElementsByClassName("focus")[0]
+
+        if(window.getComputedStyle(settingswrapper).getPropertyValue('opacity') == 1) {
+            settingswrapper.style.opacity = 0;
+        } else {
+            removeInfos()
+        }
+
     }
 }
 
@@ -163,6 +181,7 @@ document.body.addEventListener('keydown', (e) =>{
 
         sectionCheck();
         setColActive(true, false);
+        focusSubMenu(false, false, true, false);  
         
     }
 
@@ -171,8 +190,9 @@ document.body.addEventListener('keydown', (e) =>{
         e.preventDefault();
         sectionNumber--;
 
-        sectionCheck();
+        sectionCheck();              
         setColActive(false, true);
+        focusSubMenu(false, false, false, true);
     }
 
     else if(e.key === 'ArrowDown'){
@@ -188,7 +208,7 @@ document.body.addEventListener('keydown', (e) =>{
         subSection++;
         
         subSectionCheck();
-        focusSubMenu(true, false);
+        focusSubMenu(true, false, false, false);
     }
 
     else if(e.key === 'ArrowUp'){
@@ -204,7 +224,7 @@ document.body.addEventListener('keydown', (e) =>{
         subSection--;
         
         subSectionCheck();
-        focusSubMenu(false, true);
+        focusSubMenu(false, true, false, false);
     }
 
     else if(e.key === 'Enter'){
