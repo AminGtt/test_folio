@@ -119,13 +119,9 @@ let focusSubMenu = (downKey, upKey, rightKey, leftKey) =>{
         rows[subSection+1].classList.remove('focus');
     } else  
     if (rightKey) {
-        // TODO rows-1
-
         cols[sectionNumber-1].getElementsByClassName('focus')[0].classList.remove('focus')
     } else  
     if (leftKey) {
-        // TODO rows+1
-
         cols[sectionNumber+1].getElementsByClassName('focus')[0].classList.remove('focus')
     }
 
@@ -166,9 +162,19 @@ let open = () => {
             //function here
             settingswrapper.style.opacity = 1;
 
-        } else if(focus.classList.contains("infos")){
+        } 
+
+        else if(focus.classList.contains("infos")){
             displayInfos()
-        }
+        } 
+
+        else if(focus.classList.contains("social")){
+
+            // get the link & open in new tab
+
+            let href = focus.querySelector('a').getAttribute('href');
+            window.open(href, "_blank");
+        } 
 
     }
 }
