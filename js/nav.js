@@ -160,6 +160,7 @@ let open = () => {
         if (focus.classList.contains("settings")) {
 
             //function here
+            rows[subSection].classList.remove('focus');
             settingswrapper.style.opacity = 1;
 
         } 
@@ -185,7 +186,8 @@ let close = () => {
 
         focus = cols[sectionNumber].getElementsByClassName("focus")[0]
 
-        if(window.getComputedStyle(settingswrapper).getPropertyValue('opacity') == 1) {
+        if(window.getComputedStyle(settingswrapper).getPropertyValue('opacity') == 1) { // equivalent of the "open( if settings)" 
+            rows[subSection].classList.add('focus');
             settingswrapper.style.opacity = 0;
         } else {
             removeInfos()
@@ -193,6 +195,30 @@ let close = () => {
 
     }
 }
+
+colorSelector.addEventListener("change", (e) => {
+    e.preventDefault;
+    let colorParsed = colorSelector.value.split(',').map(Number)
+    drawParams.backgroundColor = colorParsed
+})
+
+particlesSelector.addEventListener("change", (e) => {
+    e.preventDefault;
+    let opac = 1;
+
+    if(particlesSelector.checked) {
+        opac = 1;
+    } else if (!particlesSelector.checked) {
+        opac = 0;
+    }
+
+    drawParams.particleOpacity = opac;
+})
+
+brightnessSelector.addEventListener("change", (e) => {
+    e.preventDefault;
+    drawParams.brightness = brightnessSelector.value;
+})
 
 document.body.addEventListener('keydown', (e) =>{
     if(e.key === 'ArrowRight'){
