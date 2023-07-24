@@ -157,27 +157,29 @@ let open = () => {
 
         focus = cols[sectionNumber].getElementsByClassName("focus")[0]
 
-        if (focus.classList.contains("settings")) {
+        if (focus) {
+            if (focus.classList.contains("settings")) {
 
-            //function here
-            if (rows[subSection]) {
-                rows[subSection].classList.remove('focus');
+                //function here
+                if (rows[subSection]) {
+                    rows[subSection].classList.remove('focus');
+                }
+                settingswrapper.style.opacity = 1;
+    
+            } 
+    
+            else if(focus.classList.contains("infos")){
+                displayInfos()
+            } 
+    
+            else if(focus.classList.contains("social")){
+    
+                // get the link & open in new tab
+    
+                let href = focus.querySelector('a').getAttribute('href');
+                window.open(href, "_blank");
             }
-            settingswrapper.style.opacity = 1;
-
-        } 
-
-        else if(focus.classList.contains("infos")){
-            displayInfos()
-        } 
-
-        else if(focus.classList.contains("social")){
-
-            // get the link & open in new tab
-
-            let href = focus.querySelector('a').getAttribute('href');
-            window.open(href, "_blank");
-        } 
+        }
 
     }
 }
