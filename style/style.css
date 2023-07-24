@@ -119,10 +119,15 @@ body ul {
   font-size: 14px;
 }
 
-.details_icon {
+.details_icon, .details_main_icon {
   height: 30px;
   width: 30px;
   margin-right: 10px;
+}
+
+.xbox_key_icon {
+  position: absolute;
+  opacity: 0;
 }
 
 .active {
@@ -315,10 +320,18 @@ body ul {
   text-shadow: none;
   background-color: dodgerblue;
   transition: opacity 0.1s ease;
+  font-size: 18px;
+  white-space: normal;
+  line-height: 2em;
 }
 #maininfo h1 {
   border-bottom: 2px solid white;
   padding: 10px 0 20px;
+}
+#maininfo .d-pad, #maininfo .a-btn, #maininfo .b-btn {
+  position: relative;
+  top: 5px;
+  margin: 0;
 }
 
 #settingswrapper {
@@ -333,7 +346,7 @@ body ul {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.01) 100%);
   transition: opacity ease 0.1s;
 }
-#settingswrapper section {
+#settingswrapper article {
   position: relative;
   top: 40%;
   margin: 10px 0 10px 25px;

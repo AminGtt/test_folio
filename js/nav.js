@@ -118,10 +118,10 @@ let focusSubMenu = (downKey, upKey, rightKey, leftKey) =>{
     if (upKey) {
         rows[subSection+1].classList.remove('focus');
     } else  
-    if (rightKey) {
+    if (rightKey && cols[sectionNumber-1].getElementsByClassName('focus')[0]) {
         cols[sectionNumber-1].getElementsByClassName('focus')[0].classList.remove('focus')
     } else  
-    if (leftKey) {
+    if (leftKey && cols[sectionNumber+1].getElementsByClassName('focus')[0]) {
         cols[sectionNumber+1].getElementsByClassName('focus')[0].classList.remove('focus')
     }
 
@@ -160,7 +160,9 @@ let open = () => {
         if (focus.classList.contains("settings")) {
 
             //function here
-            rows[subSection].classList.remove('focus');
+            if (rows[subSection]) {
+                rows[subSection].classList.remove('focus');
+            }
             settingswrapper.style.opacity = 1;
 
         } 
@@ -196,6 +198,48 @@ let close = () => {
     }
 }
 
+let right  = () => {
+    sectionNumber++;
+    sectionCheck();
+    setColActive(true, false);
+    focusSubMenu(false, false, true, false);
+}
+
+let left  = () => {
+    sectionNumber--;
+    sectionCheck();              
+    setColActive(false, true);
+    focusSubMenu(false, false, false, true);
+}
+
+let down  = () => {
+    if(subSection < rows.length - 1) {
+        subSectionTopPos = subSectionTopPos - 110;
+        cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+        rows[subSection].style.top = -220+'px';
+    }
+
+    subSection++;
+    
+    subSectionCheck();
+    focusSubMenu(true, false, false, false);
+    hideMainInfo();
+}
+
+let up  = () => {
+    if(subSection > 0) {
+        subSectionTopPos = subSectionTopPos +  110;
+        cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+        rows[subSection-1].style.top = 0+'px';
+    }
+    
+    subSection--;
+    
+    subSectionCheck();
+    focusSubMenu(false, true, false, false);
+    hideMainInfo();
+}
+
 colorSelector.addEventListener("change", (e) => {
     e.preventDefault;
     let colorParsed = colorSelector.value.split(',').map(Number)
@@ -221,59 +265,44 @@ brightnessSelector.addEventListener("change", (e) => {
 })
 
 document.body.addEventListener('keydown', (e) =>{
+
+    let keyboardIcons = document.querySelectorAll('.details_icon'),
+        controllerIcons = document.querySelectorAll(".xbox_key_icon");
+
+    keyboardIcons.forEach(icon => {
+        icon.style.opacity = 1;
+    })
+
+    controllerIcons.forEach(icon => {
+        icon.style.opacity = 0;
+    })
+
     if(e.key === 'ArrowRight'){
         playNavSound();
         e.preventDefault();
-        sectionNumber++;
-
-        sectionCheck();
-        setColActive(true, false);
-        focusSubMenu(false, false, true, false);  
-        
+          
+        right();
     }
 
     else if(e.key === 'ArrowLeft'){
         playNavSound();
         e.preventDefault();
-        sectionNumber--;
-
-        sectionCheck();              
-        setColActive(false, true);
-        focusSubMenu(false, false, false, true);
+        
+        left();
     }
 
     else if(e.key === 'ArrowDown'){
         playNavSound();
         e.preventDefault();
 
-        if(subSection < rows.length - 1) {
-            subSectionTopPos = subSectionTopPos - 110;
-            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
-            rows[subSection].style.top = -220+'px';
-        }
-
-        subSection++;
-        
-        subSectionCheck();
-        focusSubMenu(true, false, false, false);
-        hideMainInfo();
+        down();
     }
 
     else if(e.key === 'ArrowUp'){
         playNavSound();
         e.preventDefault();
 
-        if(subSection > 0) {
-            subSectionTopPos = subSectionTopPos +  110;
-            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
-            rows[subSection-1].style.top = 0+'px';
-        }
-        
-        subSection--;
-        
-        subSectionCheck();
-        focusSubMenu(false, true, false, false);
-        hideMainInfo();
+        up();
     }
 
     else if(e.key === 'Enter'){

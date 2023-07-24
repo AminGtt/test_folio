@@ -27,6 +27,7 @@
     <script defer src="js/clock.js"></script>
     <script defer src="js/nav.js"></script>
     <script defer src="js/app.js"></script>
+    <script defer src="js/controller_support.js"></script>
 </head>
 <body>
     <audio id="startup" src="assets/sounds/startup.mp3" type="audio/mp3"></audio>
@@ -52,7 +53,9 @@
 
         <div id="welcomerBtn">
             <img class="details_icon" src="assets/icons/enterkey.png" alt="enterKey">
+            <img class="details_icon xbox_key_icon" src="assets/icons/Akey_xbox_controller.png" alt="Akey_xbox_controller">
             <p>Valider</p>
+
         </div>
     </section>
     
@@ -106,7 +109,23 @@
 
                         <div id="maininfo">
                             <h1>Welcome to AminStation 3!</h1>
-                            <p>Navigate through the XMB menu using the arrow keys to have a look around, <br> press enter and esc to open/close a menu.</p>
+                            <p>
+                                Navigate through the XMB menu using the arrow keys to have a look around. <br>
+                                Press Enter/Esc to open/close a menu. <br>
+                                You can also navigate with an Xbox controller. <br>
+                                Use the D-Pad 
+                                <span>
+                                    <img class="details_main_icon d-pad" src="assets/icons/d-pad.png" alt="d-pad_icon">
+                                </span> 
+                                to move and 
+                                <span>
+                                    <img class="details_main_icon a-btn" src="assets/icons/Akey_xbox_controller.png" alt="d-pad_icon">
+                                </span>
+                                /
+                                <span>
+                                    <img class="details_main_icon b-btn" src="assets/icons/Bkey_xbox_controller.png" alt="d-pad_icon">
+                                </span> to open/close menus.
+                            </p>
                             <p>Made by Amin Gatta</p>
                         </div>
 
@@ -323,71 +342,82 @@
 
             <!-- At the end this part will be pushed in js depending the subsection -->
 
-            <section>
-                <label for="colorSelector">Color:</label>
-                <select name="colorSelector" id="colorSelector">
-                    <option value="37,89,179">sapphire</option>
-                    <option value="104,107,108">silk</option>
-                    <option value="26,115,115">turquoise</option>
-                    <option value="20,101,50">emerald</option>
-                    <option value="160,120,0">gold</option>
-                    <option value="116,15,48">ruby</option>
-                    <option value="118,6,135">amethyst</option>
-                    <option value="192,114,40">amber</option>
-                </select>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/sapphire.png" alt="sapphire_icon">
-                    <p>Sapphire</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/silk.png" alt="silk_icon">
-                    <p>Silk</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/turquoise.png" alt="turquoise_icon">
-                    <p>Turquoise</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/emerald.png" alt="emerald_icon">
-                    <p>Emerald</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/gold.png" alt="gold_icon">
-                    <p>Gold</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/ruby.png" alt="ruby_icon">
-                    <p>Ruby</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/amethyst.png" alt="amethyst_icon">
-                    <p>Amethyst</p>
-                </div>
-
-                <div class="colorwrapper">
-                    <img src="assets/icons/colors/amber.png" alt="amber_icon">
-                    <p>Amber</p>                
-                </div>
-
-            </section>
-            
-            <section>
-                <label for="particlesSelector">Particles:</label>
-                <input type="checkbox" id="particlesSelector" name="particlesSelector" checked>
-                <p>ON</p>
-            </section>
+            <article id="themeSettings">
+                <section>
+                    <label for="colorSelector">Color:</label>
+                    <select name="colorSelector" id="colorSelector">
+                        <option value="37,89,179">sapphire</option>
+                        <option value="104,107,108">silk</option>
+                        <option value="26,115,115">turquoise</option>
+                        <option value="20,101,50">emerald</option>
+                        <option value="160,120,0">gold</option>
+                        <option value="116,15,48">ruby</option>
+                        <option value="118,6,135">amethyst</option>
+                        <option value="192,114,40">amber</option>
+                    </select>
     
-            <section>
-                <label for="brightnessSelector">Brightness:</label>
-                <input type="range" id="brightnessSelector" name="brightnessSelector" min="0" max="1.3" step="0.01" value="1.14">
-            </section>
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/sapphire.png" alt="sapphire_icon">
+                        <p>Sapphire</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/silk.png" alt="silk_icon">
+                        <p>Silk</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/turquoise.png" alt="turquoise_icon">
+                        <p>Turquoise</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/emerald.png" alt="emerald_icon">
+                        <p>Emerald</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/gold.png" alt="gold_icon">
+                        <p>Gold</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/ruby.png" alt="ruby_icon">
+                        <p>Ruby</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/amethyst.png" alt="amethyst_icon">
+                        <p>Amethyst</p>
+                    </div>
+    
+                    <div class="colorwrapper">
+                        <img src="assets/icons/colors/amber.png" alt="amber_icon">
+                        <p>Amber</p>                
+                    </div>
+    
+                </section>
+                
+                <section>
+                    <label for="particlesSelector">Particles:</label>
+                    <input type="checkbox" id="particlesSelector" name="particlesSelector" checked>
+                    <p>ON</p>
+                </section>
+        
+                <section>
+                    <label for="brightnessSelector">Brightness:</label>
+                    <input type="range" id="brightnessSelector" name="brightnessSelector" min="0" max="1.3" step="0.01" value="1.14">
+                </section>
+            </article>
+
+            <article hidden id="soundSettings">
+
+            </article>
+
+            <article hidden id="dateSettings">
+
+            </article>
+
         </aside>
     </main>
 
