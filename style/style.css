@@ -362,13 +362,18 @@ body ul {
   filter: drop-shadow(6px 0px 10px #000);
 }
 
-.colorwrapper {
+.themewrapper {
   display: flex;
 }
-.colorwrapper img {
+.themewrapper img {
   height: 25px;
   width: 25px;
   margin-right: 15px;
+}
+
+#offbtn {
+  visibility: hidden;
+  position: absolute;
 }
 
 @keyframes glow {

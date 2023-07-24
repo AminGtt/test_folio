@@ -155,32 +155,66 @@ let open = () => {
     } 
     else if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
 
-        focus = cols[sectionNumber].getElementsByClassName("focus")[0]
+        focus = menu.getElementsByClassName("focus")[0]
 
         if (focus) {
-            if (focus.classList.contains("settings")) {
-
-                //function here
-                if (rows[subSection]) {
-                    rows[subSection].classList.remove('focus');
-                }
-                settingswrapper.style.opacity = 1;
-    
-            } 
-    
-            else if(focus.classList.contains("infos")){
+               
+            if(focus.classList.contains("infos")){ //open infos
                 displayInfos()
             } 
     
-            else if(focus.classList.contains("social")){
+            else if(focus.classList.contains("social")){ //open social medias
     
                 // get the link & open in new tab
     
                 let href = focus.querySelector('a').getAttribute('href');
                 window.open(href, "_blank");
+            } else if (focus.classList.contains("settings")) { // open settingswrapper
+
+                currentLabel = 0;
+
+                if (rows[subSection]) {
+                    rows[subSection].classList.remove('focus');
+                }
+                settingswrapper.style.opacity = 1;
+                settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+                
+    
+            } else if (focus.classList.contains('themeSelector')) { // go deeper in settings
+
+                currentSection = settingswrapper.querySelectorAll("section")[currentLabel]
+
+                wrappers = currentSection.getElementsByClassName('themewrapper')
+
+                if(wrappers[currentWrapper]) {
+                    wrappers[currentWrapper].classList.add('focus')
+                    focus.classList.remove('focus')
+                }
+            } else if(focus.classList.contains('themewrapper')) {
+
+                options = currentSection.querySelectorAll('option')
+
+                if(options.length > 1) {
+                    options[currentWrapper].selected = 'selected';
+                    colorSelector.dispatchEvent(new Event('change'));
+                } 
+                else if (currentSection.querySelector('#onbtn')) {
+
+                    particlesSelector.checked = !particlesSelector.checked
+                    particlesSelector.dispatchEvent(new Event('change'));
+
+                    if (particlesSelector.checked) {
+                        currentSection.querySelector('#onbtn').style.visibility = "visible"
+                        currentSection.querySelector('#offbtn').style.visibility = "hidden"
+                    } else if (!particlesSelector.checked) {
+                        currentSection.querySelector('#onbtn').style.visibility = "hidden"
+                        currentSection.querySelector('#offbtn').style.visibility = "visible"
+                    }
+                }
+
+                
             }
         }
-
     }
 }
 
@@ -188,12 +222,26 @@ let close = () => {
 
     if (window.getComputedStyle(menu).getPropertyValue('opacity') == 1) {
 
-        focus = cols[sectionNumber].getElementsByClassName("focus")[0]
+        focus = menu.getElementsByClassName("focus")[0]
 
-        if(window.getComputedStyle(settingswrapper).getPropertyValue('opacity') == 1) { // equivalent of the "open( if settings)" 
+        if(focus.classList.contains('themeSelector')) { // close the settingswrapper
+            
             rows[subSection].classList.add('focus');
             settingswrapper.style.opacity = 0;
-        } else {
+            settingswrapper.querySelectorAll('label').forEach(label => {
+                if(label.classList.contains('focus')) {
+                    label.classList.remove('focus')
+                }
+            })
+        
+        }
+        else if (focus.classList.contains('themewrapper')) { // close settings details "themewrapper"
+
+            settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+            focus.classList.remove('focus')
+            currentWrapper = 0
+        }
+        else {
             removeInfos()
         }
 
@@ -201,55 +249,135 @@ let close = () => {
 }
 
 let right  = () => {
-    sectionNumber++;
-    sectionCheck();
-    setColActive(true, false);
-    focusSubMenu(false, false, true, false);
+
+    if(settingswrapper.querySelectorAll('label')[currentLabel].classList.contains('focus')) {
+        // check if settingswrapper is opened & focus on label
+    } 
+    else if(wrappers[currentWrapper].classList.contains('focus')) {
+        // check if settingswrapper is opened & focus on themewrapper
+    } 
+    else {
+        sectionNumber++;
+        sectionCheck();
+        setColActive(true, false);
+        focusSubMenu(false, false, true, false);
+    }
+
 }
 
 let left  = () => {
-    sectionNumber--;
-    sectionCheck();              
-    setColActive(false, true);
-    focusSubMenu(false, false, false, true);
+
+    if(settingswrapper.querySelectorAll('label')[currentLabel].classList.contains('focus')) {
+        // check if settingswrapper is opened
+    } 
+    else if(wrappers[currentWrapper].classList.contains('focus')) {
+        // check if settingswrapper is opened & focus on themewrapper
+    } 
+    else {
+        sectionNumber--;
+        sectionCheck();              
+        setColActive(false, true);
+        focusSubMenu(false, false, false, true);
+    }
+
 }
 
 let down  = () => {
-    if(subSection < rows.length - 1) {
-        subSectionTopPos = subSectionTopPos - 110;
-        cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
-        rows[subSection].style.top = -220+'px';
-    }
-
-    subSection++;
     
-    subSectionCheck();
-    focusSubMenu(true, false, false, false);
-    hideMainInfo();
+    // check if settingswrapper is opened, if it is navigate into it
+    if(settingswrapper.querySelectorAll('label')[currentLabel].classList.contains('focus')) {
+        currentLabel++;
+
+        if(currentLabel > settingswrapper.querySelectorAll('label').length-1){
+            currentLabel = settingswrapper.querySelectorAll('label').length-1
+        }
+
+        settingswrapper.querySelectorAll('label')[currentLabel-1].classList.remove('focus')
+        settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+    } 
+    else if(wrappers[currentWrapper].classList.contains('focus')) {
+        // check if settingswrapper is opened & focus on themewrapper
+
+        currentWrapper++;
+
+        if (currentWrapper > wrappers.length-1) {
+            currentWrapper = wrappers.length-1;
+        }
+
+        wrappers[currentWrapper].classList.add('focus')
+        if(wrappers[currentWrapper-1]) {
+            wrappers[currentWrapper-1].classList.remove('focus')
+        }
+    } 
+    else {
+        if(subSection < rows.length - 1) {
+            subSectionTopPos = subSectionTopPos - 110;
+            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+            rows[subSection].style.top = -220+'px';
+        }
+
+        subSection++;
+
+        subSectionCheck();
+        focusSubMenu(true, false, false, false);
+        hideMainInfo();
+    }
 }
 
 let up  = () => {
-    if(subSection > 0) {
-        subSectionTopPos = subSectionTopPos +  110;
-        cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
-        rows[subSection-1].style.top = 0+'px';
+
+    // check if settingswrapper is opened, if it is navigate into it
+    if(settingswrapper.querySelectorAll('label')[currentLabel].classList.contains('focus')) {
+        currentLabel--;
+
+        if(currentLabel < 0){
+            currentLabel = 0
+        }
+
+        settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+        if (settingswrapper.querySelectorAll('label')[currentLabel+1]) {
+            settingswrapper.querySelectorAll('label')[currentLabel+1].classList.remove('focus')
+        }
+    } 
+    else if(wrappers[currentWrapper].classList.contains('focus')) {
+        // check if settingswrapper is opened & focus on themewrapper
+
+        currentWrapper--;
+
+        if (currentWrapper < 0) {
+            currentWrapper = 0;
+        }
+
+        wrappers[currentWrapper].classList.add('focus')
+        if(wrappers[currentWrapper+1]) {
+            wrappers[currentWrapper+1].classList.remove('focus')
+        }
+    } 
+    else {
+        if(subSection > 0) {
+            subSectionTopPos = subSectionTopPos +  110;
+            cols[sectionNumber].querySelector('.xmb_row').style.top = subSectionTopPos+'px';
+            rows[subSection-1].style.top = 0+'px';
+        }
+        
+        subSection--;
+        
+        subSectionCheck();
+        focusSubMenu(false, true, false, false);
+        hideMainInfo();
     }
+
     
-    subSection--;
-    
-    subSectionCheck();
-    focusSubMenu(false, true, false, false);
-    hideMainInfo();
 }
 
 colorSelector.addEventListener("change", (e) => {
-    e.preventDefault;
+    e.preventDefault();
     let colorParsed = colorSelector.value.split(',').map(Number)
     drawParams.backgroundColor = colorParsed
 })
 
 particlesSelector.addEventListener("change", (e) => {
-    e.preventDefault;
+    e.preventDefault();
     let opac = 1;
 
     if(particlesSelector.checked) {
@@ -262,7 +390,7 @@ particlesSelector.addEventListener("change", (e) => {
 })
 
 brightnessSelector.addEventListener("change", (e) => {
-    e.preventDefault;
+    e.preventDefault();
     drawParams.brightness = brightnessSelector.value;
 })
 

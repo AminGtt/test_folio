@@ -8,7 +8,8 @@ const startupSound = document.getElementById("startup"),
     settingswrapper = document.getElementById("settingswrapper"),
     cols = document.querySelectorAll('.xmb_col'),
     dateTime = document.getElementById("date"),
-    clockSection = document.getElementById("clock");
+    clockSection = document.getElementById("clock"),
+    colorwrappers = document.querySelectorAll('.colorwrapper');
 
 let menu = document.getElementById("menu"),
     welcomer = document.getElementById("welcomer"),
@@ -27,4 +28,8 @@ let menu = document.getElementById("menu"),
     info,
     infos,
     focus,
+    currentLabel = 0,
+    currentSection = settingswrapper.querySelectorAll("section")[currentLabel],
+    currentWrapper = 0,
+    wrappers = currentSection.getElementsByClassName('themewrapper'),
     goNextStep = false;
