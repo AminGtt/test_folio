@@ -171,16 +171,48 @@ let open = () => {
                 window.open(href, "_blank");
             } else if (focus.classList.contains("settings")) { // open settingswrapper
 
-                currentLabel = 0;
-
+                
                 if (rows[subSection]) {
                     rows[subSection].classList.remove('focus');
                 }
                 settingswrapper.style.opacity = 1;
-                settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+
+                if (settingswrapper.querySelectorAll('article')[subSection].id == 'themeSettings'){
+                    
+                    currentLabel = 0;
+                    settingswrapper.querySelectorAll('label')[currentLabel].classList.add('focus')
+
+                    //manage opacity
+                    themeArticle.style.opacity = 1
+                    soundArticle.style.opacity = 0
+                    dateArticle.style.opacity = 0
+
+                }
+                else if (settingswrapper.querySelectorAll('article')[subSection].id == 'soundSettings'){
+                    
+                    console.log(currentLabel)
+
+                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('p')[currentLabel].classList.add('focus')
+
+                    themeArticle.style.opacity = 0
+                    soundArticle.style.opacity = 1
+                    dateArticle.style.opacity = 0
+
+                }
+                else if (settingswrapper.querySelectorAll('article')[subSection].id == 'dateSettings'){
+                    
+                    console.log(currentLabel)
+
+                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('p')[currentLabel].classList.add('focus')
+
+                    themeArticle.style.opacity = 0
+                    soundArticle.style.opacity = 0
+                    dateArticle.style.opacity = 1
+                }
                 
     
             } else if (focus.classList.contains('themeSelector')) { // go deeper in settings
+
 
                 currentSection = settingswrapper.querySelectorAll("section")[currentLabel]
 
@@ -190,6 +222,8 @@ let open = () => {
                     wrappers[currentWrapper].classList.add('focus')
                     focus.classList.remove('focus')
                 }
+
+
             } else if(focus.classList.contains('themewrapper')) {
 
                 options = currentSection.querySelectorAll('option')
@@ -199,10 +233,10 @@ let open = () => {
                     colorSelector.dispatchEvent(new Event('change'));
                 } 
                 else if (currentSection.querySelector('#onbtn')) {
-
+                    
                     particlesSelector.checked = !particlesSelector.checked
                     particlesSelector.dispatchEvent(new Event('change'));
-
+                    
                     if (particlesSelector.checked) {
                         currentSection.querySelector('#onbtn').style.visibility = "visible"
                         currentSection.querySelector('#offbtn').style.visibility = "hidden"
@@ -210,9 +244,7 @@ let open = () => {
                         currentSection.querySelector('#onbtn').style.visibility = "hidden"
                         currentSection.querySelector('#offbtn').style.visibility = "visible"
                     }
-                }
-
-                
+                } // else if => for brightness           
             }
         }
     }
@@ -234,6 +266,22 @@ let close = () => {
                 }
             })
         
+        }
+        else if(focus.classList.contains('soundSelector')) {
+            
+            console.log('toto')
+            rows[subSection].classList.add('focus');
+            settingswrapper.style.opacity = 0;
+
+
+        }
+        else if(focus.classList.contains('dateSelector')) {
+
+            console.log('tata')
+            rows[subSection].classList.add('focus');
+            settingswrapper.style.opacity = 0;
+
+
         }
         else if (focus.classList.contains('themewrapper')) { // close settings details "themewrapper"
 
