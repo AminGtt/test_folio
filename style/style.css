@@ -376,6 +376,14 @@ body ul {
   position: absolute;
 }
 
+.brightnessTriggers {
+  display: flex;
+}
+.brightnessTriggers p {
+  opacity: 1;
+  font-size: 25px;
+}
+
 @keyframes glow {
   from {
     text-shadow: 0 0 1px #d3d3d3, 0 0 2px #acacac, 0 0 2px #b1afaf, 0 0 5px #9b9b9b;

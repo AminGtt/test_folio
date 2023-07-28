@@ -35,4 +35,5 @@ let menu = document.getElementById("menu"),
     currentSection = settingswrapper.querySelectorAll("section")[currentLabel],
     currentWrapper = 0,
     wrappers = currentSection.getElementsByClassName('themewrapper'),
-    goNextStep = false;
+    goNextStep = false,
+    defaultBrightValue = 1.15;

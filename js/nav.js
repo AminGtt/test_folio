@@ -236,15 +236,42 @@ let open = () => {
                     
                     particlesSelector.checked = !particlesSelector.checked
                     particlesSelector.dispatchEvent(new Event('change'));
+
                     
                     if (particlesSelector.checked) {
-                        currentSection.querySelector('#onbtn').style.visibility = "visible"
-                        currentSection.querySelector('#offbtn').style.visibility = "hidden"
+                        currentSection.querySelector('#onbtn').style.visibility = "visible";
+                        currentSection.querySelector('#offbtn').style.visibility = "hidden";
                     } else if (!particlesSelector.checked) {
-                        currentSection.querySelector('#onbtn').style.visibility = "hidden"
-                        currentSection.querySelector('#offbtn').style.visibility = "visible"
+                        currentSection.querySelector('#onbtn').style.visibility = "hidden";
+                        currentSection.querySelector('#offbtn').style.visibility = "visible";
                     }
-                } // else if => for brightness           
+                } else if (currentSection.querySelector('#brightnessSelector')){
+
+                    if(focus.querySelector('#rm_bright')) {
+                        
+                        defaultBrightValue -= 0.1;
+
+                        if(defaultBrightValue < 0.05) {
+                            defaultBrightValue = 0.05;
+                        }
+
+                        brightnessSelector.value = defaultBrightValue;
+                        
+                    }
+                    if(focus.querySelector('#add_bright')) {
+
+                        defaultBrightValue += 0.1;
+
+                        if(defaultBrightValue > 1.35) {
+                            defaultBrightValue = 1.35;
+                        }
+
+                        brightnessSelector.value = defaultBrightValue;
+
+                    }
+
+                    brightnessSelector.dispatchEvent(new Event('change'));
+                }
             }
         }
     }
