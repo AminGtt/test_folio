@@ -347,7 +347,7 @@ body ul {
   transition: opacity ease 0.1s;
 }
 #settingswrapper article {
-  position: relative;
+  position: absolute;
   top: 40%;
   margin: 10px 0 10px 25px;
 }
@@ -371,7 +371,7 @@ body ul {
   margin-right: 15px;
 }
 
-#offbtn {
+#offbtn, #offbtnsound {
   visibility: hidden;
   position: absolute;
 }

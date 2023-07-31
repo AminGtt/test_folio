@@ -426,18 +426,51 @@
 
             <article id="soundSettings">
                 <section>
-                    <p class="soundSelector">toto</p>
+                    <label for="soundSelector">Sounds:</label>
+                    <input hidden type="checkbox" id="soundSelector" name="soundSelector" checked>
+                    <div class="soundwrapper">
+                        <p id="onbtnsound">ON</p>
+                        <p id="offbtnsound">OFF</p>
+                    </div>
                 </section>
             </article>
 
             <article id="dateSettings">
-                <section>
-                    <p class="dateSelector">tata</p>
-                </section>
-            </article>
 
+                <section>
+                    <label for="dateSelector">Date format :</label>                
+                    <select hidden name="dateSelector" id="dateSelector">
+                        <option value="dd:mm:yyyy">FR</option>
+                        <option value="dd:mm:yyyy">US</option>
+                    </select>
+
+                    <div class="datewrapper">
+                        <p>dd:mm</p>
+                    </div>
+
+                    <div class="datewrapper">
+                        <p>mm:dd</p>
+                    </div>
+                </section>
+
+                <section>
+                    <label for="timeSelector">Time format :</label>                
+                    <select hidden name="timeSelector" id="timeSelector">
+                        <option>12</option>
+                        <option>24</option>
+                    </select>
+
+                    <div class="datewrapper">
+                        <p>12</p>
+                    </div>
+
+                    <div class="datewrapper">
+                        <p>24</p>
+                    </div>
+                </section>
+
+            </article>
         </aside>
     </main>
-
 </body>
 </html>

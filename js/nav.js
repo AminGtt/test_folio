@@ -192,7 +192,7 @@ let open = () => {
                     
                     console.log(currentLabel)
 
-                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('p')[currentLabel].classList.add('focus')
+                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('label')[currentLabel].classList.add('focus')
 
                     themeArticle.style.opacity = 0
                     soundArticle.style.opacity = 1
@@ -203,7 +203,7 @@ let open = () => {
                     
                     console.log(currentLabel)
 
-                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('p')[currentLabel].classList.add('focus')
+                    settingswrapper.querySelectorAll('article')[subSection].querySelectorAll('label')[currentLabel].classList.add('focus')
 
                     themeArticle.style.opacity = 0
                     soundArticle.style.opacity = 0
